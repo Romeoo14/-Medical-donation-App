@@ -5,40 +5,209 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Medical Treatment Donation App</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+  <style>
+    /* Global Styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f2f7f6; /* Light background color */
+      color: #333;
+    }
+
+    h1, h2 {
+      font-family: 'Roboto', sans-serif;
+      color: #fff;
+    }
+
+    /* Header Styling */
+    header {
+      background: linear-gradient(135deg, #ff6a00, #ffcc00); /* Gradient background */
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      margin-top: 10px;
+    }
+
+    /* Main Section Styling */
+    main {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    section {
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+    }
+
+    /* Form Styling */
+    label {
+      font-size: 1.1rem;
+      color: #333;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input[type="number"], input[type="file"], textarea {
+      width: 100%;
+      padding: 15px;
+      font-size: 1rem;
+      margin-top: 8px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      background-color: #fafafa;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    button {
+      background-color: #ff6a00;
+      color: white;
+      padding: 15px;
+      font-size: 1.2rem;
+      border-radius: 8px;
+      border: none;
+      width: 100%;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #ffcc00; /* Change to yellow on hover */
+    }
+
+    /* Share Button Styling */
+    #share-btn {
+      background-color: #ffcc00;
+      color: #333;
+      border: 2px solid #ff6a00;
+    }
+
+    #share-btn:hover {
+      background-color: #ff6a00;
+      color: white;
+    }
+
+    /* Footer Styling */
+    footer {
+      background-color: #ff6a00;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      border-radius: 10px 10px 0 0;
+      box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    footer p {
+      font-size: 1rem;
+      margin: 0;
+    }
+
+    footer a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
+
+  <!-- Header Section -->
   <header>
     <h1>Medical Treatment Donation App</h1>
+    <p>Your donation can help save lives in medical emergencies!</p>
   </header>
 
+  <!-- Main Section -->
   <main>
     <section>
       <h2>Donate for Medical Emergencies</h2>
       <form id="donation-form">
+        <!-- Reason for Donation -->
         <label for="reason">Reason for Donation:</label>
-        <textarea id="reason" name="reason" rows="4" placeholder="Enter the reason for your donation" required></textarea>
+        <textarea id="reason" name="reason" placeholder="Describe the reason for your donation" required></textarea>
 
+        <!-- Amount Needed -->
         <label for="amount">Amount Needed (₹):</label>
         <input type="number" id="amount" name="amount" placeholder="Enter amount" required>
 
+        <!-- Photo Upload -->
         <label for="photo">Upload Photo/Bill (Optional):</label>
         <input type="file" id="photo" name="photo" accept="image/*">
 
+        <!-- Submit Button -->
         <button type="submit">Submit Donation Request</button>
       </form>
     </section>
 
     <section>
       <h2>Share Your Request</h2>
-      <p>Share your donation request on Instagram or other social media platforms to earn support!</p>
-      <button id="share-btn">Share on Social Media</button>
+      <p>Share your donation request on social media and earn support from others!</p>
+      <button id="share-btn" onclick="shareOnSocialMedia()">Share on Social Media</button>
     </section>
   </main>
 
+  <!-- Footer Section -->
   <footer>
-    <p>&copy; 2025 Medical Treatment Donation App. All rights reserved.</p>
+    <p>&copy; 2025 Medical Treatment Donation App. All rights reserved. <a href="#">Privacy Policy</a></p>
   </footer>
+
+  <script>
+    // Function to handle social media sharing
+    function shareOnSocialMedia() {
+      const donationInfo = document.getElementById("reason").value;
+      const amount = document.getElementById("amount").value;
+
+      if (donationInfo && amount) {
+        // Placeholder for actual social media API integration
+        alert(`Sharing your donation request:\nReason: ${donationInfo}\nAmount Needed: ₹${amount}`);
+      } else {
+        alert("Please fill in the donation details before sharing.");
+      }
+    }
+
+    // Form submission handler
+    const form = document.getElementById("donation-form");
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const reason = document.getElementById("reason").value;
+      const amount = document.getElementById("amount").value;
+
+      if (reason && amount) {
+        alert("Donation request submitted successfully!");
+        form.reset();
+      } else {
+        alert("Please fill in all required fields.");
+      }
+    });
+  </script>
 </body>
 </html>
